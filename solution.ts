@@ -80,3 +80,22 @@ const printBookDetails = (book: Book) => {
     }, Available: ${book.isAvailable === true ? "Yes" : "No"}`
   );
 };
+
+type Value = string | number;
+
+const getUniqueValues = (array1: Value[], array2: Value[]) => {
+  const result1: Value[] = [...new Set(array1)];
+  const result2: Value[] = [...new Set(array2)];
+
+  const fullArray: Value[] = [...result1, ...result2];
+
+  const finalArray = fullArray.reduce((acc, value): Value[] => {
+    if (!acc.includes(value)) {
+      acc.push(value);
+    }
+
+    return acc;
+  }, [] as Value[]);
+
+  console.log(finalArray);
+};
