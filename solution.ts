@@ -89,13 +89,11 @@ const getUniqueValues = (array1: Value[], array2: Value[]) => {
 
   const fullArray: Value[] = [...result1, ...result2];
 
-  const finalArray = fullArray.reduce((acc, value): Value[] => {
+  return fullArray.reduce((acc, value): Value[] => {
     if (!acc.includes(value)) {
       acc.push(value);
     }
 
     return acc;
   }, [] as Value[]);
-
-  console.log(finalArray);
 };
