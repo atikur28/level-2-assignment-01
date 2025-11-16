@@ -1,23 +1,25 @@
-const formatValue = (value: string | number | boolean) => {
+const formatValue = (
+  value: string | number | boolean
+): string | number | boolean => {
   if (typeof value === "string") {
-    return (value = value.toUpperCase());
+    return value.toUpperCase();
   } else if (typeof value === "number") {
-    return (value = value * 10);
+    return value * 10;
   } else if (typeof value === "boolean") {
-    return (value = !value);
+    return !value;
   } else {
-    console.log("Invalid input!");
+    throw new Error("Invalid input!");
   }
 };
 
-const getLength = (value: string | any[]) => {
+const getLength = (value: string | any[]): number => {
   if (typeof value === "string") {
     const length: number = value.length;
     return length;
   } else if (Array.isArray(value)) {
     return value.length;
   } else {
-    console.log("Invalid input!");
+    throw new Error("Invalid input!");
   }
 };
 
@@ -84,18 +86,31 @@ const printBookDetails = (book: Book) => {
 type Value = string | number;
 
 const getUniqueValues = (array1: Value[], array2: Value[]) => {
-  const result1: Value[] = [...new Set(array1)];
-  const result2: Value[] = [...new Set(array2)];
+  const result: Value[] = [];
 
-  const fullArray: Value[] = [...result1, ...result2];
-
-  return fullArray.reduce((acc, value): Value[] => {
-    if (!acc.includes(value)) {
-      acc.push(value);
+  for (let i = 0; i < array1.length; i++) {
+    let isUnique = true;
+    for (let j = 0; j < result.length; j++) {
+      if (array1[i] === result[j]) {
+        isUnique = false;
+        break;
+      }
     }
+    if (isUnique) result.push(array1[i]);
+  }
 
-    return acc;
-  }, [] as Value[]);
+  for (let i = 0; i < array2.length; i++) {
+    let isUnique = true;
+    for (let j = 0; j < result.length; j++) {
+      if (array2[i] === result[j]) {
+        isUnique = false;
+        break;
+      }
+    }
+    if (isUnique) result.push(array2[i]);
+  }
+
+  return result;
 };
 
 type Product = {
