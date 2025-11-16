@@ -48,3 +48,20 @@ const filterByRating = (items: Items[]): Items[] => {
     return acc;
   }, [] as Items[]);
 };
+
+type Users = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
+
+const filterActiveUsers = (users: Users[]): Users[] => {
+  return users.reduce((acc, user) => {
+    if (user.isActive === true) {
+      acc.push(user);
+    }
+
+    return acc;
+  }, [] as Users[]);
+};
