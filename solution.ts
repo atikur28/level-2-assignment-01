@@ -35,5 +35,16 @@ class Person {
   }
 }
 
-const person1 = new Person("John Doe", 30);
-const person2 = new Person("Alice", 25);
+type Items = {
+  title: string;
+  rating: number;
+};
+
+const filterByRating = (items: Items[]): Items[] => {
+  return items.reduce((acc, item) => {
+    if (item.rating >= 4) {
+      acc.push(item);
+    }
+    return acc;
+  }, [] as Items[]);
+};
