@@ -97,3 +97,26 @@ const getUniqueValues = (array1: Value[], array2: Value[]) => {
     return acc;
   }, [] as Value[]);
 };
+
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+
+const calculateTotalPrice = (products: Product[]) => {
+  return products.reduce((acc, product) => {
+    const { price, quantity, discount } = product || {};
+
+    let productTotal = price * quantity;
+
+    if (discount && discount > 0 && discount <= 100) {
+      productTotal -= (productTotal * discount) / 100;
+    }
+
+    acc += productTotal;
+
+    return acc;
+  }, 0);
+};
