@@ -9,3 +9,14 @@ const formatValue = (value: string | number | boolean) => {
     console.log("Invalid input!");
   }
 };
+
+const getLength = (value: string | any[]) => {
+  if (typeof value === "string") {
+    const length: number = value.length;
+    return length;
+  } else if (Array.isArray(value)) {
+    return value.length;
+  } else {
+    console.log("Invalid input!");
+  }
+};
