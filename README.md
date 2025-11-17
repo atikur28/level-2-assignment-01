@@ -9,6 +9,15 @@ Interface hocche object ar class er jonno. Jeta extend kora shohoj. Kintu type d
 
 ## 2. Provide an example of using union and intersection types in TypeScript.
 
-**Answer (Banglish):**
-Union type example: type Value = string | number;
-Intersection type example: type User = Person & Customer;
+**Answer:**
+Union type example:
+
+```
+type Value = string | number;
+```
+
+Intersection type example:
+
+```
+type User = Person & Customer;
+```
