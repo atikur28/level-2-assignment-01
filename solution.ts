@@ -43,12 +43,17 @@ type Items = {
 };
 
 const filterByRating = (items: Items[]): Items[] => {
-  return items.reduce((acc, item) => {
+  const result: Items[] = [];
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+
     if (item.rating >= 4) {
-      acc.push(item);
+      result.push(item);
     }
-    return acc;
-  }, [] as Items[]);
+  }
+
+  return result;
 };
 
 type Users = {
@@ -59,13 +64,17 @@ type Users = {
 };
 
 const filterActiveUsers = (users: Users[]): Users[] => {
-  return users.reduce((acc, user) => {
-    if (user.isActive === true) {
-      acc.push(user);
-    }
+  const activeUsers: Users[] = [];
 
-    return acc;
-  }, [] as Users[]);
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+
+    if (user.isActive === true) {
+      activeUsers.push(user);
+    }
+  }
+
+  return activeUsers;
 };
 
 interface Book {
